@@ -44,11 +44,24 @@ elasticsearchSqlApp.controller('MainController', function ($scope, $http, $sce,$
   $scope.config = loadOptionsFromStorageOrDefault();
 	
   var tablePresenter = new TablePresenter('searchResult','#searchResultZone');
-  
+  loadAllFields();
   /* todo move to class - options handler */
   $scope.saveConfigToStorage = function () {
     localStorage.setItem(optionsKey,JSON.stringify($scope.config));
   }
+
+  function loadAllFields() {
+        $http.get("http://10.2.23.63:8080/ploutos/search/plugin/fetchAllFields")
+            .success(function(data, status, headers, config) {
+                var allFields = data.data;
+                $scope.allFields = allFields;
+            })
+            .error(function(data, status, headers, config) {
+                var allFields = JSON.parse("[{\"idxAlias\":\"tns_test\",\"fields\":\"test1,test2,test1,test2,test1,test2,test1,test2,test1,test2,test1,test2,test1,test2,\"},{\"idxAlias\":\"account_idx\",\"fields\":\"test1,test2,test1,test2,test1,test2,test1,test2,test1,test2,test1,test2,test1,test2,\"}]");
+                $scope.allFields = allFields;
+            });
+  }
+
   function loadOptionsFromStorageOrDefault () {
     var defaultOptions = {
       isFlat : false,
