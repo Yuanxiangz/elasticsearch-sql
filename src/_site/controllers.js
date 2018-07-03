@@ -416,12 +416,7 @@ function updateWithScrollIfNeeded (query) {
 	function getUrl() {
         var url = settings['base_uri'] || localStorage.getItem("lasturl");
 		if(url == undefined) {
-            if (location.protocol == "file") {
-				url = "http://localhost:9200"
-			}
-			else {
-				url = location.protocol+'//' + location.hostname + (location.port ? ':'+location.port : '');
-			}
+            url = "http://"+location.hostname+":9200"
 		}
 
         if (url.indexOf('http://') !== 0 && url.indexOf('https://') !== 0) {
