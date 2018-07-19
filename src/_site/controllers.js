@@ -105,7 +105,7 @@ $scope.fetchAll = function(){
 	$scope.nextSearch = function(){
 		$scope.error = "";
 		$scope.nextLoading = true;
-		$scope.$apply();
+		//$scope.$apply();
     var needToBuildTable = false;
 
 
@@ -151,7 +151,7 @@ $scope.fetchAll = function(){
         })
         .finally(function() {
           $scope.nextLoading = false;
-          $scope.$apply();
+          //$scope.$apply();
           if(needToBuildTable) {
             tablePresenter.createOrReplace($scope.resultsColumns,$scope.resultsRows);
           }
@@ -185,7 +185,7 @@ function updateWithScrollIfNeeded (query) {
 		
 		$scope.resultExplan = false;
     tablePresenter.destroy();
-    $scope.$apply();
+    //$scope.$apply();
 		saveUrl()
 
     var query = window.editor.getValue();
@@ -238,7 +238,7 @@ function updateWithScrollIfNeeded (query) {
         })
         .finally(function() {
           $scope.searchLoading = false;
-          $scope.$apply();
+          //$scope.$apply();
           if($scope.resultsColumns.length >0){
             tablePresenter.createOrReplace($scope.resultsColumns,$scope.resultsRows);
           }
@@ -255,7 +255,7 @@ function updateWithScrollIfNeeded (query) {
         $scope.showResults = false;
         tablePresenter.destroy();
         $scope.resultExplan = true;
-		$scope.$apply();
+		//$scope.$apply();
 
 
 		saveUrl()
@@ -277,7 +277,7 @@ function updateWithScrollIfNeeded (query) {
         })
         .finally(function() {
           $scope.explainLoading = false;
-          $scope.$apply()
+          //$scope.$apply()
         });
 	}
 
@@ -372,7 +372,7 @@ function updateWithScrollIfNeeded (query) {
         })
         .finally(function() {
           $scope.nextLoading = false;
-          $scope.$apply()
+          //$scope.$apply()
         });
 
 
